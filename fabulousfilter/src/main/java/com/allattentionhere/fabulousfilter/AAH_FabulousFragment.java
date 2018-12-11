@@ -2,6 +2,7 @@ package com.allattentionhere.fabulousfilter;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
+import android.annotation.SuppressLint;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.DialogInterface;
@@ -11,9 +12,9 @@ import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.design.widget.CoordinatorLayout;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.view.ViewPager;
+import androidx.coordinatorlayout.widget.CoordinatorLayout;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.viewpager.widget.ViewPager;
 import android.util.DisplayMetrics;
 import android.view.Gravity;
 import android.view.View;
@@ -117,6 +118,7 @@ public class AAH_FabulousFragment extends ViewPagerBottomSheetDialogFragment {
     }
 
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void setupDialog(Dialog dialog, int style) {
         super.setupDialog(dialog, style);
@@ -155,7 +157,7 @@ public class AAH_FabulousFragment extends ViewPagerBottomSheetDialogFragment {
             @Override
             public void onShow(DialogInterface dialog) {
                 ViewPagerBottomSheetDialog d = (ViewPagerBottomSheetDialog) dialog;
-                bottomSheet = (FrameLayout) d.findViewById(android.support.design.R.id.design_bottom_sheet);
+                bottomSheet = (FrameLayout) d.findViewById(R.id.design_bottom_sheet);
                 ViewPagerBottomSheetBehavior.from(bottomSheet).setState(ViewPagerBottomSheetBehavior.STATE_COLLAPSED);
                 if (viewgroup_static != null) {
                     int range = (int) (metrics.heightPixels - (metrics.density * peek_height) - getStatusBarHeight(getContext()));
@@ -204,6 +206,7 @@ public class AAH_FabulousFragment extends ViewPagerBottomSheetDialogFragment {
         anim.setDuration(anim_duration);
         fl.startAnimation(anim);
         anim.setAnimationListener(new Animation.AnimationListener() {
+            @SuppressLint("RestrictedApi")
             @Override
             public void onAnimationStart(Animation animation) {
                 if (getActivity() != null && !getActivity().isFinishing()) {
@@ -211,6 +214,7 @@ public class AAH_FabulousFragment extends ViewPagerBottomSheetDialogFragment {
                 }
             }
 
+            @SuppressLint("RestrictedApi")
             @Override
             public void onAnimationEnd(Animation animation) {
                 fabulous_fab.setImageResource(android.R.color.transparent);
@@ -273,6 +277,7 @@ public class AAH_FabulousFragment extends ViewPagerBottomSheetDialogFragment {
 
     }
 
+    @SuppressLint("RestrictedApi")
     public void closeFilter(final Object o) {
         if (animationListener != null) animationListener.onCloseAnimationStart();
         if (ViewPagerBottomSheetBehavior.from(bottomSheet).getState() == ViewPagerBottomSheetBehavior.STATE_EXPANDED) {
@@ -339,6 +344,7 @@ public class AAH_FabulousFragment extends ViewPagerBottomSheetDialogFragment {
                 });
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onStop() {
         parent_fab.setVisibility(View.VISIBLE);

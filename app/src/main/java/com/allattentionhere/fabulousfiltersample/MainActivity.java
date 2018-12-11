@@ -1,13 +1,14 @@
 package com.allattentionhere.fabulousfiltersample;
 
+import android.annotation.SuppressLint;
 import android.content.res.Configuration;
-import android.support.design.widget.FloatingActionButton;
-import android.support.v4.util.ArrayMap;
-import android.support.v7.app.AppCompatActivity;
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
+import androidx.collection.ArrayMap;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.DefaultItemAnimator;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.DefaultItemAnimator;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 import android.util.Log;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -32,6 +33,7 @@ public class MainActivity extends AppCompatActivity implements AAH_FabulousFragm
     private ArrayMap<String, List<String>> applied_filters = new ArrayMap<>();
     MyFabFragment dialogFrag, dialogFrag1;
 
+    @SuppressLint("RestrictedApi")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
