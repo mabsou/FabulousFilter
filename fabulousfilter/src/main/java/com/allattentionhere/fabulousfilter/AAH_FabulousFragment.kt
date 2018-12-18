@@ -378,6 +378,10 @@ open class AAH_FabulousFragment : ViewPagerBottomSheetDialogFragment() {
         this.header = header;
     }
 
+    override fun getTheme(): Int {
+        return R.style.DialogNoMargin
+    }
+
     companion object {
 
         fun getStatusBarHeight(context: Context): Int {

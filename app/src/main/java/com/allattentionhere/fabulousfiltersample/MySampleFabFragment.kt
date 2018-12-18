@@ -7,14 +7,11 @@ import android.view.View
 import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
+import androidx.fragment.app.DialogFragment
 
 import com.allattentionhere.fabulousfilter.AAH_FabulousFragment
+import com.allattentionhere.fabulousfiltersample.R.id.*
 import com.google.android.flexbox.FlexboxLayout
-
-import com.allattentionhere.fabulousfiltersample.R.id.imgbtn_apply
-import com.allattentionhere.fabulousfiltersample.R.id.imgbtn_refresh
-import com.allattentionhere.fabulousfiltersample.R.id.tabs_types
-import com.allattentionhere.fabulousfiltersample.R.id.vp_types
 
 
 /**
@@ -30,6 +27,7 @@ class MySampleFabFragment : AAH_FabulousFragment() {
 
         val rl_content = contentView.findViewById<View>(R.id.rl_content) as RelativeLayout
         val ll_buttons = contentView.findViewById<View>(R.id.ll_buttons) as LinearLayout
+        val btn_close = contentView.findViewById<View>(R.id.btn_close) as Button
         contentView.findViewById<View>(R.id.btn_close).setOnClickListener { closeFilter("closed") }
 
         //params to set
@@ -40,6 +38,7 @@ class MySampleFabFragment : AAH_FabulousFragment() {
         //        setViewPager(vp_types); //optional; if you use viewpager that has scrollview
         setViewMain(rl_content) //necessary; main bottomsheet view
         setMainContentView(contentView) // necessary; call at end before super
+        setHeader(btn_close)
         super.setupDialog(dialog, style) //call super at last
     }
 
