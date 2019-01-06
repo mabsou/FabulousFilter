@@ -20,25 +20,21 @@ import com.google.android.flexbox.FlexboxLayout
 
 class MySampleFabFragment : AAH_FabulousFragment() {
 
-    private var btn_close: Button? = null
-
     override fun setupDialog(dialog: Dialog, style: Int) {
         val contentView = View.inflate(context, R.layout.filter_sample_view, null)
 
         val rl_content = contentView.findViewById<View>(R.id.rl_content) as RelativeLayout
         val ll_buttons = contentView.findViewById<View>(R.id.ll_buttons) as LinearLayout
-        val btn_close = contentView.findViewById<View>(R.id.btn_close) as Button
         contentView.findViewById<View>(R.id.btn_close).setOnClickListener { closeFilter("closed") }
 
         //params to set
         setAnimationDuration(600) //optional; default 500ms
-        setPeekHeight(300) // optional; default 400dp
+        setPeekHeight(600) // optional; default 400dp
         setCallbacks((activity as AAH_FabulousFragment.Callbacks?)!!) //optional; to get back result
         setViewgroupStatic(ll_buttons) // optional; layout to stick at bottom on slide
         //        setViewPager(vp_types); //optional; if you use viewpager that has scrollview
         setViewMain(rl_content) //necessary; main bottomsheet view
         setMainContentView(contentView) // necessary; call at end before super
-        setHeader(btn_close)
         super.setupDialog(dialog, style) //call super at last
     }
 

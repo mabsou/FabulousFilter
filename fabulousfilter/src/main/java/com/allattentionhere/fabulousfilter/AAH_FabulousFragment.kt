@@ -58,8 +58,6 @@ open class AAH_FabulousFragment : ViewPagerBottomSheetDialogFragment() {
     private var callbacks: Callbacks? = null
     private var animationListener: AnimationListener? = null
     private var viewPager: ViewPager? = null
-    private var header : View ? = null
-
 
     private val mBottomSheetBehaviorCallback = object : ViewPagerBottomSheetBehavior.BottomSheetCallback() {
 
@@ -87,8 +85,7 @@ open class AAH_FabulousFragment : ViewPagerBottomSheetDialogFragment() {
 
         override fun onSlide(bottomSheet: View, slideOffset: Float) {
             if (viewgroup_static != null) {
-                val headerHeight = if (header != null) header!!.height.toFloat() else 0.0f
-                val range = (metrics!!.heightPixels.toFloat() - metrics!!.density * peek_height - getStatusBarHeight(context!!).toFloat() + headerHeight).toInt()
+                val range = (metrics!!.heightPixels.toFloat() - metrics!!.density * peek_height  + 125.0f).toInt()
                 viewgroup_static!!.animate().translationY(-range + range * slideOffset).setDuration(0).start()
             }
         }
@@ -148,8 +145,7 @@ open class AAH_FabulousFragment : ViewPagerBottomSheetDialogFragment() {
             bottomSheet = d.findViewById<View>(R.id.design_bottom_sheet) as FrameLayout?
             ViewPagerBottomSheetBehavior.from(bottomSheet!!).state = ViewPagerBottomSheetBehavior.STATE_COLLAPSED
             if (viewgroup_static != null) {
-                val headerHeight = if (header != null) header!!.height.toFloat() else 0.0f
-                val range = (metrics!!.heightPixels.toFloat() - metrics!!.density * peek_height - getStatusBarHeight(context!!).toFloat() + headerHeight).toInt()
+                val range = (metrics!!.heightPixels.toFloat() - metrics!!.density * peek_height  + 125.0f).toInt()
                 viewgroup_static!!.animate().translationY((-range).toFloat()).setDuration(0).start()
             }
             val fab_range_y = (fab_pos_y - (metrics!!.heightPixels - metrics!!.density * peek_height)).toInt()
@@ -372,10 +368,6 @@ open class AAH_FabulousFragment : ViewPagerBottomSheetDialogFragment() {
 
     fun setViewPager(viewPager: ViewPager) {
         this.viewPager = viewPager
-    }
-
-    fun setHeader(header : View){
-        this.header = header;
     }
 
     override fun getTheme(): Int {
